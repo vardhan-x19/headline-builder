@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
-import { Shield, ChevronDown } from "lucide-react";
+import { Shield, ChevronDown, LogIn } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Grid background */}
@@ -63,8 +66,22 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+          className="mt-8 flex justify-center gap-4"
+        >
+          <Button onClick={() => navigate("/auth")} size="lg" className="font-mono">
+            <LogIn className="w-4 h-4 mr-2" /> Launch Dashboard
+          </Button>
+          <Button onClick={() => navigate("/dashboard")} variant="outline" size="lg" className="font-mono">
+            File Upload Demo
+          </Button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="mt-16"
+          className="mt-12"
         >
           <ChevronDown className="w-6 h-6 text-primary mx-auto animate-bounce" />
         </motion.div>
